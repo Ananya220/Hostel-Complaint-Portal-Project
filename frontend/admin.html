@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Dashboard</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="form-container">
+
+    <h2>Admin Dashboard</h2>
+
+    <div id="complaintsContainer"></div>
+
+  </div>
+
+  <script>
+
+    async function loadComplaints() {
+
+      try {
+
+        const response = await fetch(
+          "http://localhost:5000/api/complaints/all"
+        );
+
+        const complaints = await response.json();
+
+        console.log(complaints);
+
+        const container = document.getElementById(
+          "complaintsContainer"
+        );
+
+        container.innerHTML = "";
+
+        complaints.forEach((complaint) => {
+
+          container.innerHTML += `
+
+            <div class="complaint-card">
+
+              <h3>${complaint.studentName}</h3>
+
+              <p>
+                <strong>Room:</strong>
+                ${complaint.roomNumber}
+              </p>
+
+              <p>
+                <strong>Category:</strong>
+                ${complaint.category}
+              </p>
+
+              <p>
+                <strong>Description:</strong>
+                ${complaint.description}
+              </p>
+
+              <p>
+                <strong>Status:</strong>
+                ${complaint.status}
+              </p>
+
+            </div>
+
+          `;
+
+        });
+
+      } catch (error) {
+
+        console.log(error);
+
+        alert("Error loading complaints");
+
+      }
+
+    }
+
+    loadComplaints();
+
+  </script>
+
+</body>
+
+</html>

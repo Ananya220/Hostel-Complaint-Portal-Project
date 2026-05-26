@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="form-container">
+
+  <h2>Submit Complaint</h2>
+
+  <input
+    type="text"
+    id="studentName"
+    placeholder="Student Name"
+  >
+
+  <input
+    type="text"
+    id="roomNumber"
+    placeholder="Room Number"
+  >
+
+  <select id="category">
+
+    <option>Electricity</option>
+    <option>Water</option>
+    <option>WiFi</option>
+    <option>Cleaning</option>
+
+  </select>
+
+  <textarea
+    id="description"
+    placeholder="Describe issue"
+  ></textarea>
+
+  <button onclick="submitComplaint()">
+    Submit
+  </button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
